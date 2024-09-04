@@ -15,6 +15,9 @@ class Triangle(Figure):
         else:
             raise ValueError('ERROR: value of the side of the triangle is not correct')
 
+    def __str__(self):
+        return f"object of the Triangle class: a = {self.a}, b = {self.b}, c = {self.c}"
+
     @property
     def get_area(self):
         p = self.get_perimeter / 2

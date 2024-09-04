@@ -12,6 +12,9 @@ class Rectangle(Figure):
         else:
             raise ValueError('ERROR: value of the side of the rectangle is not correct')
 
+    def __str__(self):
+        return f"object of the Rectangle class: a = {self.a}, b = {self.b}"
+
     @property
     def get_area(self):
         return self.a * self.b

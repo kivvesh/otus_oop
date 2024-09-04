@@ -11,6 +11,9 @@ class Circle(Figure):
         else:
             raise ValueError('ERROR: value of the side of the circle is not correct')
 
+    def __str__(self):
+        return f"object of the Circle class: r = {self.r}"
+
     @property
     def get_area(self):
         return math.pi * (self.r ** 2)
