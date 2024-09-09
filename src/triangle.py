@@ -1,4 +1,4 @@
-from otus_oop.src.base.figure import Figure
+from src.base.figure import Figure
 
 
 class Triangle(Figure):
