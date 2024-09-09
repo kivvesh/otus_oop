@@ -6,3 +6,6 @@
 4. Выполнен pull-request ветки develop
 
 # otus_pytest
+
+1. Реализованы тесты для класса Circle
+2. 
