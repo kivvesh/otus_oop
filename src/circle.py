@@ -6,7 +6,7 @@ from src.base.figure import Figure
 class Circle(Figure):
     """Circle сlass"""
     def __init__(self, r: int):
-        if isinstance(r, int):
+        if isinstance(r, int) or isinstance(r, float):
             if r > 0:
                 self.r = r
             else:
