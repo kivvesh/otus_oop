@@ -1,6 +1,9 @@
 import pytest
 
+from src.rectangle import Rectangle
+from src.square import Square
 from src.circle import Circle
+from src.triangle import Triangle
 
 
 @pytest.mark.parametrize(
@@ -13,6 +16,7 @@ from src.circle import Circle
     ids = ['ValueError, r is str','ValueError, r < 0 ','ValueError, r is None', ]
 )
 @pytest.mark.smoke
+@pytest.mark.circle
 def test_negative_initialization_circle(r, error):
     """Тест для проверки инициализации объектов класса Circle"""
     with pytest.raises(ValueError, match=error):
@@ -36,7 +40,6 @@ def test_get_area(r, area):
     assert test_circle.get_area == area
 
 
-
 @pytest.mark.parametrize(
     'r,perimeter',
     [
@@ -51,3 +54,18 @@ def test_get_area(r, area):
 def test_get_perimeter(r, perimeter):
     test_circle = Circle(r)
     assert test_circle.get_perimeter == perimeter
+
+
+@pytest.mark.parametrize(
+    'r,figure,result',
+    [
+        (4,Rectangle(2,6),62.27),
+        (3,Triangle(2,2,3),30.25),
+        (2,Square(5),37.57),
+    ], ids=['4 - Rectangle','3 - Triangle','2 - Square']
+)
+@pytest.mark.circle
+@pytest.mark.smoke
+def test_add_area(r, figure,result):
+    test_circle = Circle(r)
+    assert test_circle.add_area(figure) == result

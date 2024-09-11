@@ -1,6 +1,10 @@
 import pytest
 
+from src.rectangle import Rectangle
 from src.square import Square
+from src.circle import Circle
+from src.triangle import Triangle
+from src.base.figure import Figure
 
 
 @pytest.mark.parametrize(
@@ -47,3 +51,18 @@ def test_get_area(a,area):
 def test_get_perimeter(a,perimeter):
     test_square = Square(a)
     assert test_square.get_perimeter == perimeter
+
+
+@pytest.mark.parametrize(
+    'a,figure,result',
+    [
+        (2,Rectangle(2,6),16),
+        (4,Circle(2),28.57),
+        (3,Triangle(5,5,3),16.15),
+    ], ids=['2- Rectangle','4 - Circle','3 - Triangle']
+)
+@pytest.mark.square
+@pytest.mark.smoke
+def test_add_area(a, figure,result):
+    test_square = Square(a)
+    assert test_square.add_area(figure) == result

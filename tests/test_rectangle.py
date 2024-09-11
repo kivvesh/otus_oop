@@ -1,7 +1,9 @@
 import pytest
 
 from src.rectangle import Rectangle
-
+from src.square import Square
+from src.circle import Circle
+from src.triangle import Triangle
 
 @pytest.mark.parametrize(
     'a,b,error',
@@ -47,3 +49,18 @@ def test_get_area(a,b,area):
 def test_get_perimeter(a,b,perimeter):
     test_rectangle = Rectangle(a,b)
     assert test_rectangle.get_perimeter == perimeter
+
+
+@pytest.mark.parametrize(
+    'a,b,figure,result',
+    [
+        (1,4,Circle(2),16.57),
+        (1,4,Triangle(2,2,3),5.98),
+        (1,4,Square(5),29),
+    ], ids=['1,4 - Circle','1,4 - Triangle','1,4 - Square']
+)
+@pytest.mark.rectangle
+@pytest.mark.smoke
+def test_add_area(a,b,figure,result):
+    test_rectangle = Rectangle(a,b)
+    assert test_rectangle.add_area(figure) == result
